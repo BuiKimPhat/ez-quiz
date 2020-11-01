@@ -45,8 +45,8 @@ keystone.createList("User", {
     },
     score: {
       type: Float,
-      schemaDoc: `Player's overall score after the game`
-    }
+      schemaDoc: `Player's overall score after the game`,
+    },
   },
   labelField: "username",
 });
@@ -57,17 +57,17 @@ keystone.createList("Question", {
     ask: {
       type: Text,
       isRequired: true,
-      schemaDoc: `The question`
+      schemaDoc: `The question`,
     },
     answer: {
       type: Text,
       isRequired: true,
-      schemaDoc: `The correct answer of the question`
+      schemaDoc: `The correct answer of the question`,
     },
     score: {
       type: Float,
-      schemaDoc: `The score for this question if the player answered correctly`
-    }
+      schemaDoc: `The score for this question if the player answered correctly`,
+    },
   },
   labelField: "ask",
 });
@@ -113,42 +113,42 @@ keystone.createList("Game", {
   labelField: "name",
 });
 
-keystone.createList('Result', {
+keystone.createList("Result", {
   schemaDoc: `Store the results of the games`,
   fields: {
     game: {
       type: Relationship,
-      ref: 'Game',
+      ref: "Game",
       schemaDoc: `Game to get results from`,
-      isRequired: true
+      isRequired: true,
     },
     player: {
       type: Relationship,
-      ref: 'User',
+      ref: "User",
       schemaDoc: `Player to get results from`,
-      isRequired: true
+      isRequired: true,
     },
     question: {
       type: Relationship,
-      ref: 'Question',
+      ref: "Question",
       schemaDoc: `Question that the player answered`,
-      isRequired: true
+      isRequired: true,
     },
     answer: {
       type: Text,
-      schemaDoc: `Answer of the player`
+      schemaDoc: `Answer of the player`,
     },
     isCorrect: {
       type: Checkbox,
       isRequired: true,
-      schemaDoc: `Is the player's answer correct`
+      schemaDoc: `Is the player's answer correct`,
     },
     time: {
       type: Float,
-      schemaDoc: `Time takes the player to answer`
-    }
-  }
-})
+      schemaDoc: `Time takes the player to answer`,
+    },
+  },
+});
 
 const authStrategy = keystone.createAuthStrategy({
   type: PasswordAuthStrategy,
@@ -169,7 +169,7 @@ module.exports = {
       isAccessAllowed: ({ authentication: { item: user, listKey: list } }) =>
         !!user && !!user.isAdmin,
       authStrategy: authStrategy,
-      hooks: require.resolve('./custom-hooks')
+      hooks: require.resolve("./custom-hooks"),
     }),
     new NextApp({ dir: "client-app" }),
   ],
