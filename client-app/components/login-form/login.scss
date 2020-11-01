@@ -1,0 +1,16 @@
+.login {
+    background-color: #f3eac2;
+    width: 50%;
+    border-radius: 40px;
+    .login-form {
+        .form-input {
+            border-radius: 40px;
+            padding: 20px;
+        }
+        .login-submit{
+            border-radius: 40px;
+            padding: 10px;
+            width: 100%;
+        }
+    }
+}
